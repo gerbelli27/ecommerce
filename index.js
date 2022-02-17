@@ -25,13 +25,14 @@ close.addEventListener('click', () => {
 
 /* Cart functions \\\\\\\\\\\ 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
-var cart =  0;
+
 var quantity = 0;
 var product = [{
     product: "Fall Limited Edition Sneakers",
     brand: "SNEAKER COMPANY",
     price: "125.00",
-    quantity: 0
+    quantity: 0,
+    total: 0
 }]
 
 /* Buttons quantity*/
@@ -52,9 +53,11 @@ minus.addEventListener('click', () => {
 
 addCart.addEventListener('click', () => {
     product[0].quantity = quantity;
-    cart = product[0].quantity
+    product[0].total = quantity * product[0].price;
     quantity = 0;
     showQuantity.innerHTML = quantity;
+
+    /* ja faz um Inner no Icone do Carrinho */
 })
 
 /* Show Cart \\\\\\\\\\\ 
@@ -63,11 +66,10 @@ addCart.addEventListener('click', () => {
 const cartButton = document.querySelector('.cart');
 
 cartButton.addEventListener('click', () => {
-   if(cart > 0){
-       
-    console.log(product[0].product + "$" + product[0].price + "X" +  cart  + " " + (cart * product[0].price));
-   }else{
-       window.alert('Your cart is empty !')
-   }
-})
+    if (product[0].quantity > 0) {
 
+        console.log(product[0].product + "$" + product[0].price + "X" + product[0].quantity + " " + product[0].total);
+    } else {
+        window.alert('Your cart is empty !')
+    }
+})
