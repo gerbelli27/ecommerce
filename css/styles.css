@@ -116,7 +116,7 @@ body {
     color: var(--DarkGrayishBlue);
 }
 
-.close{
+.close {
     padding-top: 25px;
     padding-bottom: 25px;
     cursor: pointer;
@@ -129,7 +129,88 @@ body {
     height: 100vh;
     width: 510px;
     background-color: black;
-    opacity: 0.5;  
+    opacity: 0.5;
+}
+
+.cart__itens {
+    box-sizing: border-box;
+    width: 19px;
+    height: 15px;
+    z-index: 1;
+    position: absolute;
+    top: 17px;
+    right: 60px;
+    background-color: var(--orange);
+    border-radius: 40%;
+    font-size: 12px;
+    color: var(--White);
+    font-weight: 700;
+    padding-left: 5px;
+    padding-top: 1px;
+}
+
+.showcart {
+    box-sizing: border-box;
+    z-index: 1;
+    position: absolute;
+    top: 80px;
+    right: 7px;
+    width: 360px;
+    height: 260px;
+    background-color: var(--White);
+    border-radius: 15px;
+    box-shadow: 2px 2px 30px 5px rgba(0, 0, 0, 0.16);
+}
+
+.showcart p {
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--GrayishBlue);
+    padding: 18px;
+    height: 60px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--veryDarkBlue);
+}
+
+.showcart span {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    font-size: 1rem;
+    color: var(--DarkGrayishBlue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.showcart b {
+    font-weight: 700;
+    color: var(--veryDarkBlue)
+}
+
+.showcart__img-product {
+    width: 60px;
+    border-radius: 5px;
+}
+
+.showcart__img-delete {
+    width: 15px;
+    height: 20px;
+}
+
+.btn__checkout {
+    position: relative;
+    top: 110px;
+    left: 20px;
+    background-color: var(--orange);
+    color: var(--White);
+    width: 90%;
+    height: 55px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 40px;
 }
 
 .main-image {
@@ -315,12 +396,6 @@ body {
     transition: 0.55s;
 }
 
-@media screen and (min-width: 576px) {
-    .header {
-        justify-content: space-evenly;
-    }
-}
-
 @media screen and (min-width: 768px) {
 
     main {
@@ -394,8 +469,18 @@ body {
         margin-left: 10px;
     }
 
+    .showcart {
+        top: 90px;
+        right: 0px;
+    }
+
     .model {
         font-size: 2.6rem;
+    }
+
+    .cart__itens {
+        top: 40px; 
+        right: 70px;
     }
 
     .wrapper__price {
