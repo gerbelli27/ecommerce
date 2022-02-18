@@ -155,7 +155,8 @@ body {
     position: absolute;
     top: 80px;
     right: 7px;
-    width: 360px;
+    width: 95vw;
+    max-width: 365px;
     height: 260px;
     background-color: var(--White);
     border-radius: 15px;
