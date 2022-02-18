@@ -64,12 +64,15 @@ addCart.addEventListener('click', () => {
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 const cartButton = document.querySelector('.cart');
+const showCart = document.querySelector('.showcart');
 
 cartButton.addEventListener('click', () => {
     if (product[0].quantity > 0) {
-
-        console.log(product[0].product + "$" + product[0].price + "X" + product[0].quantity + " " + product[0].total);
-    } else {
-        window.alert('Your cart is empty !')
+        document.querySelector(".showcart__cart").innerText = "Cart";
+        document.querySelector(".showcart__img-product").src = './images/image-product-2-thumbnail.jpg'
+        document.querySelector(".showcart__description").innerHTML = product[0].product + "<br>$" + product[0].price + "X" + product[0].quantity + "<b>$" + product[0].total + "</b>"
+        document.querySelector(".showcart__img-delete").src = './images/icon-delete.svg'
+        document.querySelector(".showcart button").classList.add("btn__checkout");
+        document.querySelector(".btn__checkout").innerText = "Checkout";   
     }
 })
