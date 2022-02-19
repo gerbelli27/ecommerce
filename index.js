@@ -89,10 +89,7 @@ cartButton.addEventListener('click', () => {
 const bin = document.querySelector('.showcart__img-delete')
 
 bin.addEventListener('click', () => {
-    document.querySelector(".showcart__cart").innerText = "Cart";
-    document.querySelector(".showcart__img-product").src = ''
-    document.querySelector(".showcart__description").innerHTML = "Your cart is empty."
-    document.querySelector(".showcart__img-delete").src = ''
+    showCart.classList.toggle('showcart--active')
     document.querySelector(".btn__checkout").innerText = "";
     document.querySelector(".btn__checkout").classList.remove("btn__checkout")
     document.querySelector(".cart__itens").innerText = "";
