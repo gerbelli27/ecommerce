@@ -101,3 +101,30 @@ bin.addEventListener('click', () => {
 })
 
 /////Photos functions
+
+previous = document.querySelector(".previous");
+next = document.querySelector(".next");
+
+let counter = 1
+
+next.addEventListener("click", () => {
+    if (counter < 4 && counter > 0) {
+        counter++;
+        let path = `./images/image-product-${counter}.jpg`;
+        document.querySelector(".image").src = path;
+    } else {
+        counter = 4;
+    }
+
+})
+
+previous.addEventListener("click", () => {
+    if (counter > 1 && counter <= 5) {
+        counter--;
+        let path = `./images/image-product-${counter}.jpg`;
+        document.querySelector(".image").src = path;
+    } else {
+        counter = 1
+    }
+
+})
