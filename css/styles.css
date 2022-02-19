@@ -176,6 +176,11 @@ body {
     color: var(--veryDarkBlue);
 }
 
+.showcart__description{
+    margin-right: 25px;
+    margin-left: 5px;
+}
+
 .showcart span {
     position: absolute;
     box-sizing: border-box;
@@ -185,7 +190,7 @@ body {
     color: var(--DarkGrayishBlue);
     display: flex;
     justify-content: space-evenly;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .showcart b {
@@ -216,6 +221,7 @@ body {
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 40px;
+    cursor: pointer;
 }
 
 .btn__checkout-empty {

@@ -97,6 +97,12 @@ bin.addEventListener('click', () => {
     quantity = 0;
 })
 
+const btn = document.getElementById("btn__checkout")
+btn.addEventListener("click", () =>{
+    window.alert(product[0].product + product[0].brand + product[0].price + product[0].quantity + product[0].total);
+    console.log(product[0]);
+})
+
 /////Photos functions
 
 previous = document.querySelector(".previous");
