@@ -55,7 +55,7 @@ body {
 .cart {
     width: auto;
     height: 20px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .cart:hover {
@@ -89,7 +89,7 @@ body {
 }
 
 .menu__list {
-    z-index: 1;
+    z-index: 2;
     box-sizing: border-box;
     position: absolute;
     top: 0px;
@@ -103,7 +103,7 @@ body {
     font-weight: 700;
     background-color: var(--White);
     padding-left: 25px;
-    padding-bottom: 350px;
+    padding-bottom: 200px;
     transition: background-color 2s, transform 2s;
 }
 
@@ -136,16 +136,16 @@ body {
     box-sizing: border-box;
     width: 19px;
     height: 15px;
-    z-index: 1;
+    z-index: 0;
     position: absolute;
     top: 17px;
-    right: 60px;
+    right: 55px;
     background-color: var(--orange);
     border-radius: 40%;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--White);
     font-weight: 700;
-    padding-left: 5px;
+    padding-left: 7px;
     padding-top: 1px;
 }
 
@@ -153,14 +153,17 @@ body {
     box-sizing: border-box;
     z-index: 1;
     position: absolute;
-    top: 80px;
+    top: -400px;
     right: 7px;
-    width: 95vw;
-    max-width: 365px;
+    width: 96vw;
     height: 260px;
     background-color: var(--White);
     border-radius: 15px;
     box-shadow: 2px 2px 30px 5px rgba(0, 0, 0, 0.16);
+}
+
+.showcart--active{
+    top: 80px;;
 }
 
 .showcart__cart {
@@ -198,6 +201,7 @@ body {
 .showcart__img-delete {
     width: auto;
     height: 15px;
+    cursor: pointer;
 }
 
 .btn__checkout {
@@ -212,6 +216,10 @@ body {
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 40px;
+}
+
+.btn__checkout-empty {
+    display: none;
 }
 
 .main-image {
@@ -397,6 +405,14 @@ body {
     transition: 0.55s;
 }
 
+
+@media screen and (min-width: 475px) {
+    .showcart {
+        width: 96vw;
+        max-width: 365px;
+    }
+}
+
 @media screen and (min-width: 768px) {
 
     main {
@@ -471,8 +487,12 @@ body {
     }
 
     .showcart {
-        top: 90px;
+        top: -400px;
         right: 0px;
+    }
+
+    .showcart--active{
+        top: 90px;
     }
 
     .model {
@@ -480,8 +500,8 @@ body {
     }
 
     .cart__itens {
-        top: 40px; 
-        right: 70px;
+        top: 39px; 
+        right: 62px;
     }
 
     .wrapper__price {

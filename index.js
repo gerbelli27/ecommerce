@@ -4,7 +4,6 @@ const buttonClose = document.querySelector('.close');
 const close = document.querySelector('.glass')
 const minus = document.querySelector('.minus');
 const plus = document.querySelector('.plus');
-
 const showQuantity = document.querySelector('.quantity');
 const addCart = document.querySelector('.add-cart');
 
@@ -26,7 +25,7 @@ close.addEventListener('click', () => {
 /* Cart functions \\\\\\\\\\\ 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-var quantity = 0;
+var quantity = 0
 var product = [{
     product: "Fall Limited Edition Sneakers",
     brand: "SNEAKER COMPANY",
@@ -36,28 +35,29 @@ var product = [{
 }]
 
 /* Buttons quantity*/
+showQuantity.innerHTML = quantity;
 
 plus.addEventListener('click', () => {
-    quantity = quantity + 1;
+    quantity++
     showQuantity.innerHTML = quantity;
 })
 
 minus.addEventListener('click', () => {
     if (quantity > 0) {
-        quantity = quantity - 1;
+        quantity--
         showQuantity.innerHTML = quantity;
     } else {
-        window.alert('Please add quantity')
+        showQuantity.innerHTML = "1"
     }
 })
 
 addCart.addEventListener('click', () => {
     product[0].quantity = quantity;
     product[0].total = quantity * product[0].price;
-    quantity = 0;
-    showQuantity.innerHTML = quantity;
-
-    /* ja faz um Inner no Icone do Carrinho */
+    showQuantity.innerHTML = 0;
+    document.querySelector(".cart-user i").classList.add("cart__itens")
+    document.querySelector(".cart__itens").innerText = quantity
+    
 })
 
 /* Show Cart \\\\\\\\\\\ 
@@ -68,11 +68,33 @@ const showCart = document.querySelector('.showcart');
 
 cartButton.addEventListener('click', () => {
     if (product[0].quantity > 0) {
+        showCart.classList.toggle('showcart--active')
         document.querySelector(".showcart__cart").innerText = "Cart";
         document.querySelector(".showcart__img-product").src = './images/image-product-2-thumbnail.jpg'
         document.querySelector(".showcart__description").innerHTML = product[0].product + "<br>$" + product[0].price + " X" + product[0].quantity + "<b> $" + product[0].total + "</b>"
         document.querySelector(".showcart__img-delete").src = './images/icon-delete.svg'
         document.querySelector(".showcart button").classList.add("btn__checkout");
-        document.querySelector(".btn__checkout").innerText = "Checkout";   
+        document.querySelector(".btn__checkout").innerText = "Checkout";
+    }else{
+        showCart.classList.toggle('showcart--active')
+        document.querySelector(".showcart__cart").innerText = "Cart";
+        document.querySelector(".showcart__img-product").src = ''
+        document.querySelector(".showcart__description").innerHTML = "Your cart is empty."
+        document.querySelector(".showcart__img-delete").src = ''
     }
+})
+
+const bin = document.querySelector('.showcart__img-delete')
+
+bin.addEventListener('click', () => {
+    product[0].quantity = 0;
+    document.querySelector(".showcart__cart").innerText = "Cart";
+    document.querySelector(".showcart__img-product").src = ''
+    document.querySelector(".showcart__description").innerHTML = "Your cart is empty."
+    document.querySelector(".showcart__img-delete").src = ''
+    document.querySelector(".btn__checkout").innerText = "";
+    document.querySelector(".btn__checkout").classList.remove("btn__checkout")
+    document.querySelector(".cart__itens").innerText = "";
+    document.querySelector(".cart__itens").classList.remove("cart__itens")
+    quantity = 0;
 })
