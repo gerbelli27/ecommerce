@@ -69,7 +69,7 @@ const cartButton = document.querySelector('.cart');
 const showCart = document.querySelector('.showcart');
 
 cartButton.addEventListener('click', () => {
-    if (product[0].quantity > 0) {
+    if (quantity > 0) {
         showCart.classList.toggle('showcart--active')
         document.querySelector(".showcart__cart").innerText = "Cart";
         document.querySelector(".showcart__img-product").src = './images/image-product-2-thumbnail.jpg'
@@ -99,3 +99,5 @@ bin.addEventListener('click', () => {
     document.querySelector(".cart__itens").classList.remove("cart__itens")
     quantity = 0;
 })
+
+/////Photos functions
