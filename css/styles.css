@@ -408,6 +408,7 @@ body {
 
 @media screen and (min-width: 475px) {
     .showcart {
+        z-index: 1;
         width: 96vw;
         max-width: 365px;
     }
@@ -489,6 +490,7 @@ body {
     .showcart {
         top: -400px;
         right: 0px;
+        z-index: 2;
     }
 
     .showcart--active{

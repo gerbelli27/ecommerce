@@ -24,7 +24,7 @@ close.addEventListener('click', () => {
 
 /* Cart functions \\\\\\\\\\\ 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
-
+var counterQuantity = 0;
 var quantity = 0
 var product = [{
     product: "Fall Limited Edition Sneakers",
@@ -35,29 +35,31 @@ var product = [{
 }]
 
 /* Buttons quantity*/
-showQuantity.innerHTML = quantity;
+
+showQuantity.innerHTML = counterQuantity;
 
 plus.addEventListener('click', () => {
-    quantity++
-    showQuantity.innerHTML = quantity;
+    counterQuantity++
+    showQuantity.innerHTML = counterQuantity;
 })
 
 minus.addEventListener('click', () => {
-    if (quantity > 0) {
-        quantity--
-        showQuantity.innerHTML = quantity;
-    } else {
-        showQuantity.innerHTML = "1"
+    if (counterQuantity > 1) {
+        counterQuantity--
+        showQuantity.innerHTML = counterQuantity;
     }
 })
 
 addCart.addEventListener('click', () => {
-    product[0].quantity = quantity;
-    product[0].total = quantity * product[0].price;
-    showQuantity.innerHTML = 0;
-    document.querySelector(".cart-user i").classList.add("cart__itens")
-    document.querySelector(".cart__itens").innerText = quantity
-    
+    if (counterQuantity > 0) {
+        quantity = quantity + counterQuantity;
+        counterQuantity = 0;
+        product[0].quantity = quantity;
+        product[0].total = quantity * product[0].price;
+        showQuantity.innerHTML = 0;
+        document.querySelector(".cart-user i").classList.add("cart__itens")
+        document.querySelector(".cart__itens").innerText = quantity
+    }
 })
 
 /* Show Cart \\\\\\\\\\\ 
@@ -75,7 +77,7 @@ cartButton.addEventListener('click', () => {
         document.querySelector(".showcart__img-delete").src = './images/icon-delete.svg'
         document.querySelector(".showcart button").classList.add("btn__checkout");
         document.querySelector(".btn__checkout").innerText = "Checkout";
-    }else{
+    } else {
         showCart.classList.toggle('showcart--active')
         document.querySelector(".showcart__cart").innerText = "Cart";
         document.querySelector(".showcart__img-product").src = ''
@@ -87,7 +89,6 @@ cartButton.addEventListener('click', () => {
 const bin = document.querySelector('.showcart__img-delete')
 
 bin.addEventListener('click', () => {
-    product[0].quantity = 0;
     document.querySelector(".showcart__cart").innerText = "Cart";
     document.querySelector(".showcart__img-product").src = ''
     document.querySelector(".showcart__description").innerHTML = "Your cart is empty."
