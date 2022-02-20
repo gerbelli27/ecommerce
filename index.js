@@ -2,13 +2,13 @@ const buttonMenu = document.querySelector(".menu");
 const menu = document.querySelector('.menu__list');
 const buttonClose = document.querySelector('.close');
 const close = document.querySelector('.glass')
+const closePop = document.querySelector('.close-pop')
 const minus = document.querySelector('.minus');
 const plus = document.querySelector('.plus');
 const showQuantity = document.querySelector('.quantity');
 const addCart = document.querySelector('.add-cart');
-
-/* Side Menu Mobile \\\\\\\\\\\ 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+const popUpPhotos = document.querySelector('.img-pop-bg');
+const mainPhoto = document.querySelector('.image')
 
 buttonMenu.addEventListener('click', () => {
     menu.classList.toggle('menu__list--active')
@@ -21,6 +21,15 @@ buttonClose.addEventListener('click', () => {
 close.addEventListener('click', () => {
     menu.classList.toggle('menu__list--active')
 })
+
+mainPhoto.addEventListener('click', () => {
+    popUpPhotos.classList.toggle('img-pop-bg-active')
+})
+
+closePop.addEventListener('click', () => {
+    popUpPhotos.classList.toggle('img-pop-bg-active')
+})
+
 
 /* Cart functions \\\\\\\\\\\ 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
@@ -98,15 +107,15 @@ bin.addEventListener('click', () => {
 })
 
 const btn = document.getElementById("btn__checkout")
-btn.addEventListener("click", () =>{
+btn.addEventListener("click", () => {
     window.alert(product[0].product + product[0].brand + product[0].price + product[0].quantity + product[0].total);
     console.log(product[0]);
 })
 
 /////Photos functions
 
-previous = document.querySelector(".previous");
-next = document.querySelector(".next");
+var previous = document.querySelector(".previous");
+var next = document.querySelector(".next");
 
 let counter = 1
 
@@ -131,3 +140,52 @@ previous.addEventListener("click", () => {
     }
 
 })
+
+var previousPop = document.querySelector(".previous-pop");
+var nextPop = document.querySelector(".next-pop");
+
+nextPop.addEventListener("click", () => {
+    if (counter < 4 && counter > 0) {
+        counter++;
+        let path = `./images/image-product-${counter}.jpg`;
+        document.querySelector(".image-pop").src = path;
+    } else {
+        counter = 4;
+    }
+
+})
+
+previousPop.addEventListener("click", () => {
+    if (counter > 1 && counter <= 5) {
+        counter--;
+        let path = `./images/image-product-${counter}.jpg`;
+        document.querySelector(".image-pop").src = path;
+    } else {
+        counter = 1
+    }
+
+})
+
+const thumbs = document.querySelectorAll(".thumbnail");
+
+for (let contador = 0; contador < thumbs.length; contador++) {
+    const buttonThumbs = thumbs[contador]
+    const img = thumbs[contador].src;
+
+    buttonThumbs.onclick = function () {
+        document.querySelector(".image").src = img.replace("-thumbnail", "")
+    }
+
+}
+
+const thumbspop = document.querySelectorAll(".thumbnail-pop");
+
+for (let contador = 0; contador < thumbspop.length; contador++) {
+    const buttonThumbs = thumbspop[contador]
+    const img = thumbspop[contador].src;
+
+    buttonThumbs.onclick = function () {
+        document.querySelector(".image-pop").src = img.replace("-thumbnail", "")
+    }
+
+}

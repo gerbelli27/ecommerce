@@ -153,7 +153,7 @@ body {
     box-sizing: border-box;
     z-index: 1;
     position: absolute;
-    top: -400px;
+    top: -1000px;
     right: 7px;
     width: 96vw;
     height: 260px;
@@ -162,8 +162,9 @@ body {
     box-shadow: 2px 2px 30px 5px rgba(0, 0, 0, 0.16);
 }
 
-.showcart--active{
-    top: 80px;;
+.showcart--active {
+    top: 80px;
+    ;
 }
 
 .showcart__cart {
@@ -176,7 +177,7 @@ body {
     color: var(--veryDarkBlue);
 }
 
-.showcart__description{
+.showcart__description {
     margin-right: 25px;
     margin-left: 5px;
 }
@@ -198,11 +199,12 @@ body {
     color: var(--veryDarkBlue)
 }
 
-.showcart__img-product{
+.showcart__img-product {
     width: auto;
     height: 60px;
     border-radius: 5px;
 }
+
 .showcart__img-delete {
     width: auto;
     height: 15px;
@@ -228,6 +230,47 @@ body {
     display: none;
 }
 
+.image-pop {
+    width: auto;
+    height: 550px;
+    border-radius: 15px;
+}
+
+.main-image-pop {
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+}
+
+.img-pop-bg {
+    z-index: 3;
+    position: absolute;
+    top: -1000px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.img-pop-bg-active {
+    top: 0px;
+}
+
+.close-pop {
+    position: relative;
+    left: calc(100% - 20px);
+    top: -12px;
+    cursor: pointer;
+    width: 20px;
+    filter: brightness(100);
+}
+
 .main-image {
     position: relative;
     width: 100%;
@@ -238,6 +281,11 @@ body {
     width: 100%;
     height: auto;
     max-width: 480px;
+    cursor: pointer;
+}
+
+.main-image-pop {
+    display: none;
 }
 
 .previous {
@@ -250,6 +298,17 @@ body {
     background: center / 10px no-repeat url("../images/icon-previous.svg"), var(--White);
 }
 
+.previous-pop {
+    position: absolute;
+    top: 40%;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: center / auto no-repeat url("../images/icon-previous.svg"), var(--White);
+    cursor: pointer;
+}
+
 .next {
     position: absolute;
     top: calc(50% - 20px);
@@ -260,25 +319,52 @@ body {
     background: center / 10px no-repeat url("../images/icon-next.svg"), var(--White);
 }
 
+.next-pop {
+    position: absolute;
+    top: 40%;
+    right: -25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: center / auto no-repeat url("../images/icon-next.svg"), var(--White);
+    cursor: pointer;
+}
+
 .thumbs {
     display: none;
 }
 
 .thumbnail {
+    box-sizing: border-box;
     width: 88px;
     border-radius: 15px;
+    background-color: var(--White);
 }
 
 .thumbnail:hover {
     cursor: pointer;
-    opacity: 0.5;
     transition: 0.30s;
+    background-color: var(--White);
+    opacity: 0.5;
+}
+
+.thumbnail-pop {
+    box-sizing: border-box;
+    width: 88px;
+    border-radius: 15px;
+    background-color: var(--White);
+}
+
+.thumbnail-pop:hover {
+    cursor: pointer;
+    transition: 0.30s;
+    background-color: var(--White);
+    filter: grayscale(50%);
 }
 
 .active {
     border: 2px solid var(--orange);
     background-color: var(--orange);
-    opacity: 0.5;
 }
 
 .wrapper__description {
@@ -499,7 +585,7 @@ body {
         z-index: 2;
     }
 
-    .showcart--active{
+    .showcart--active {
         top: 90px;
     }
 
@@ -508,7 +594,7 @@ body {
     }
 
     .cart__itens {
-        top: 39px; 
+        top: 39px;
         right: 62px;
     }
 
@@ -548,6 +634,19 @@ body {
         width: 100%;
     }
 
+    .main-image-pop {
+        display: flex;
+        flex-direction: column;
+        z-index: 3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: auto;
+    }
+
     .image {
         width: auto;
         height: 445px;
@@ -563,11 +662,13 @@ body {
     }
 
     .thumbs {
+        box-sizing: border-box;
         display: flex;
         justify-content: space-around;
         margin-top: 15px;
         margin-bottom: 20px;
     }
+
 }
 
 
