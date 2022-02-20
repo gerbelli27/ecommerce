@@ -24,7 +24,7 @@ close.addEventListener('click', () => {
 
 /* Cart functions \\\\\\\\\\\ 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
-var counterQuantity = 0;
+var counterQuantity = 1;
 var quantity = 0
 var product = [{
     product: "Fall Limited Edition Sneakers",
@@ -53,10 +53,10 @@ minus.addEventListener('click', () => {
 addCart.addEventListener('click', () => {
     if (counterQuantity > 0) {
         quantity = quantity + counterQuantity;
-        counterQuantity = 0;
+        counterQuantity = 1;
         product[0].quantity = quantity;
         product[0].total = quantity * product[0].price;
-        showQuantity.innerHTML = 0;
+        showQuantity.innerHTML = counterQuantity;
         document.querySelector(".cart-user i").classList.add("cart__itens")
         document.querySelector(".cart__itens").innerText = quantity
     }
