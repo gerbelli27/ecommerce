@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./Screenshot 2022-02-21 at 16-50-02 Frontend Mentor Eduardo Gerbelli.png)
+![Screenshot](./Screenshot 2022-02-21 at 16-50-02 Frontend Mentor Eduardo Gerbelli.png)
 
 
 ### Links
