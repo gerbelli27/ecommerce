@@ -31,8 +31,8 @@ closePop.addEventListener('click', () => {
 })
 
 
-/* Cart functions \\\\\\\\\\\ 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/* Cart functions */
+
 var counterQuantity = 1;
 var quantity = 0
 var product = [{
@@ -71,8 +71,7 @@ addCart.addEventListener('click', () => {
     }
 })
 
-/* Show Cart \\\\\\\\\\\ 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/* Show Cart \\\\\\\\\\\ */
 
 const cartButton = document.querySelector('.cart');
 const showCart = document.querySelector('.showcart');
@@ -174,11 +173,13 @@ for (let contador = 0; contador < thumbs.length; contador++) {
 
     buttonThumbs.onclick = function () {
         document.querySelector(".image").src = img.replace("-thumbnail", "")
+        document.querySelector(".image-pop").src = img.replace("-thumbnail", "") 
     }
-
+    
 }
 
 const thumbspop = document.querySelectorAll(".thumbnail-pop");
+
 
 for (let contador = 0; contador < thumbspop.length; contador++) {
     const buttonThumbs = thumbspop[contador]
