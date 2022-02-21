@@ -167,23 +167,23 @@ previousPop.addEventListener("click", () => {
 
 const thumbs = document.querySelectorAll(".thumbnail");
 
-for (let contador = 0; contador < thumbs.length; contador++) {
-    const buttonThumbs = thumbs[contador]
-    const img = thumbs[contador].src;
+for (let i = 0; i < thumbs.length; i++) {
+    const buttonThumbs = thumbs[i]
+    const img = thumbs[i].src;
 
     buttonThumbs.onclick = function () {
         document.querySelector(".image").src = img.replace("-thumbnail", "")
-        document.querySelector(".image-pop").src = img.replace("-thumbnail", "") 
+        document.querySelector(".image-pop").src = img.replace("-thumbnail", "")
     }
-    
+
 }
 
 const thumbspop = document.querySelectorAll(".thumbnail-pop");
 
 
-for (let contador = 0; contador < thumbspop.length; contador++) {
-    const buttonThumbs = thumbspop[contador]
-    const img = thumbspop[contador].src;
+for (let i = 0; i < thumbspop.length; i++) {
+    const buttonThumbs = thumbspop[i]
+    const img = thumbspop[i].src;
 
     buttonThumbs.onclick = function () {
         document.querySelector(".image-pop").src = img.replace("-thumbnail", "")
