@@ -6,6 +6,7 @@ const closePop = document.querySelector('.close-pop')
 const minus = document.querySelector('.minus');
 const plus = document.querySelector('.plus');
 const showQuantity = document.querySelector('.quantity');
+const showTotal = document.querySelector('.price');
 const addCart = document.querySelector('.add-cart');
 const popUpPhotos = document.querySelector('.img-pop-bg');
 const mainPhoto = document.querySelector('.image')
@@ -33,8 +34,8 @@ closePop.addEventListener('click', () => {
 
 /* Cart functions */
 
-var counterQuantity = 1;
-var quantity = 0
+
+
 var product = [{
     product: "Fall Limited Edition Sneakers",
     brand: "SNEAKER COMPANY",
@@ -42,6 +43,10 @@ var product = [{
     quantity: 0,
     total: 0
 }]
+
+var counterQuantity = 1;
+var quantity = product[0].quantity;
+
 
 /* Buttons quantity*/
 
