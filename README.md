@@ -28,8 +28,7 @@ Users should be able to:
 
 ### Links
 
-[Github](https://github.com/gerbelli27/ecommerce)
-[Live site](https://gerbelli27.github.io/ecommerce/)
+[Github](https://github.com/gerbelli27/ecommerce) | [Live site](https://gerbelli27.github.io/ecommerce/)
 
 ### Built with
 
