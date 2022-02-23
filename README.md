@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/gerbelli27/ecommerce)
-- Live Site URL: [Add live site URL here](https://gerbelli27.github.io/ecommerce/)
+[Github](https://github.com/gerbelli27/ecommerce)
+[Live site](https://gerbelli27.github.io/ecommerce/)
 
 ### Built with
 
