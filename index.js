@@ -1,42 +1,39 @@
-const buttonMenu = document.querySelector(".menu");
+
 const menu = document.querySelector('.menu__list');
-const buttonClose = document.querySelector('.close');
-const close = document.querySelector('.glass')
-const closePop = document.querySelector('.close-pop')
-const minus = document.querySelector('.minus');
-const plus = document.querySelector('.plus');
 const showQuantity = document.querySelector('.quantity');
 const showTotal = document.querySelector('.price');
-const addCart = document.querySelector('.add-cart');
 const popUpPhotos = document.querySelector('.img-pop-bg');
-const mainPhoto = document.querySelector('.image')
 
+
+const buttonMenu = document.querySelector(".menu");
 buttonMenu.addEventListener('click', () => {
     menu.classList.toggle('menu__list--active')
 })
 
+const buttonClose = document.querySelector('.close');
 buttonClose.addEventListener('click', () => {
     menu.classList.toggle('menu__list--active')
 })
 
+const close = document.querySelector('.glass')
 close.addEventListener('click', () => {
     menu.classList.toggle('menu__list--active')
 })
 
+const mainPhoto = document.querySelector('.image')
 mainPhoto.addEventListener('click', () => {
     popUpPhotos.classList.toggle('img-pop-bg-active')
 })
 
+const closePop = document.querySelector('.close-pop')
 closePop.addEventListener('click', () => {
     popUpPhotos.classList.toggle('img-pop-bg-active')
 })
 
 
-/* Cart functions */
+// Cart functions
 
-
-
-var product = [{
+let product = [{
     product: "Fall Limited Edition Sneakers",
     brand: "SNEAKER COMPANY",
     price: "125.00",
@@ -44,19 +41,17 @@ var product = [{
     total: 0
 }]
 
-var counterQuantity = 1;
-var quantity = product[0].quantity;
-
-
-/* Buttons quantity*/
-
+let counterQuantity = 1;
+let quantity = product[0].quantity;
 showQuantity.innerHTML = counterQuantity;
 
+const plus = document.querySelector('.plus');
 plus.addEventListener('click', () => {
     counterQuantity++
     showQuantity.innerHTML = counterQuantity;
 })
 
+const minus = document.querySelector('.minus');
 minus.addEventListener('click', () => {
     if (counterQuantity > 1) {
         counterQuantity--
@@ -64,9 +59,11 @@ minus.addEventListener('click', () => {
     }
 })
 
+
+const addCart = document.querySelector('.add-cart');
 addCart.addEventListener('click', () => {
     if (counterQuantity > 0) {
-        quantity = quantity + counterQuantity;
+        quantity += + counterQuantity;
         counterQuantity = 1;
         product[0].quantity = quantity;
         product[0].total = quantity * product[0].price;
@@ -184,8 +181,6 @@ for (let i = 0; i < thumbs.length; i++) {
 }
 
 const thumbspop = document.querySelectorAll(".thumbnail-pop");
-
-
 for (let i = 0; i < thumbspop.length; i++) {
     const buttonThumbs = thumbspop[i]
     const img = thumbspop[i].src;
