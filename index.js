@@ -1,4 +1,3 @@
-
 const menu = document.querySelector('.menu__list');
 const showQuantity = document.querySelector('.quantity');
 const showTotal = document.querySelector('.price');
@@ -41,7 +40,7 @@ let product = [{
     total: 0
 }]
 
-let counterQuantity = 1;
+let counterQuantity = 0;
 let quantity = product[0].quantity;
 showQuantity.innerHTML = counterQuantity;
 
@@ -63,8 +62,8 @@ minus.addEventListener('click', () => {
 const addCart = document.querySelector('.add-cart');
 addCart.addEventListener('click', () => {
     if (counterQuantity > 0) {
-        quantity += + counterQuantity;
-        counterQuantity = 1;
+        quantity += counterQuantity;
+        counterQuantity = 0;
         product[0].quantity = quantity;
         product[0].total = quantity * product[0].price;
         showQuantity.innerHTML = counterQuantity;
@@ -173,11 +172,14 @@ for (let i = 0; i < thumbs.length; i++) {
     const buttonThumbs = thumbs[i]
     const img = thumbs[i].src;
 
-    buttonThumbs.onclick = function () {
+    buttonThumbs.onclick = function (item) {
         document.querySelector(".image").src = img.replace("-thumbnail", "")
         document.querySelector(".image-pop").src = img.replace("-thumbnail", "")
+        thumbs.forEach((iten)=>{
+            iten.classList.remove('active') 
+        })
+        buttonThumbs.classList.add('active')
     }
-
 }
 
 const thumbspop = document.querySelectorAll(".thumbnail-pop");
@@ -185,8 +187,12 @@ for (let i = 0; i < thumbspop.length; i++) {
     const buttonThumbs = thumbspop[i]
     const img = thumbspop[i].src;
 
-    buttonThumbs.onclick = function () {
+    buttonThumbs.onclick = function (item) {
         document.querySelector(".image-pop").src = img.replace("-thumbnail", "")
+        thumbspop.forEach((item)=>{
+            item.classList.remove('active') 
+        })
+        buttonThumbs.classList.add('active')
     }
 
 }
