@@ -109,11 +109,12 @@ cartButton.addEventListener("click", () => {
 
 const previous = document.querySelector(".previous");
 const next = document.querySelector(".next");
+const thumbs = document.querySelectorAll(".thumbnail");
 
 let counter = 1;
 
 next.addEventListener("click", () => {
-  if (counter < 4 && counter > 0) {
+  if (counter < thumbs.length && counter > 0) {
     counter += 1;
     const path = `./images/image-product-${counter}.jpg`;
     document.querySelector(".image").src = path;
@@ -123,7 +124,7 @@ next.addEventListener("click", () => {
 });
 
 previous.addEventListener("click", () => {
-  if (counter > 1 && counter <= 5) {
+  if (counter > 1 && counter <= thumbs.length) {
     counter -= 1;
     const path = `./images/image-product-${counter}.jpg`;
     document.querySelector(".image").src = path;
@@ -135,8 +136,8 @@ previous.addEventListener("click", () => {
 const previousPop = document.querySelector(".previous-pop");
 const nextPop = document.querySelector(".next-pop");
 
-nextPop.addEventListener("click", () => {
-  if (counter < 4 && counter > 0) {
+nextPop.addEventListener("click", (item) => {
+  if (counter < thumbs.length && counter > 0) {
     counter += 1;
     const path = `./images/image-product-${counter}.jpg`;
     document.querySelector(".image-pop").src = path;
@@ -145,8 +146,8 @@ nextPop.addEventListener("click", () => {
   }
 });
 
-previousPop.addEventListener("click", () => {
-  if (counter > 1 && counter <= 5) {
+previousPop.addEventListener("click", (event) => {
+  if (counter > 1 && counter <= thumbs.length) {
     counter -= 1;
     const path = `./images/image-product-${counter}.jpg`;
     document.querySelector(".image-pop").src = path;
@@ -155,17 +156,15 @@ previousPop.addEventListener("click", () => {
   }
 });
 
-const thumbs = document.querySelectorAll(".thumbnail");
-
 for (let i = 0; i < thumbs.length; i++) {
   const buttonThumbs = thumbs[i];
   const img = thumbs[i].src;
 
-  buttonThumbs.onclick = function (item) {
+  buttonThumbs.onclick = () => {
     document.querySelector(".image").src = img.replace("-thumbnail", "");
     document.querySelector(".image-pop").src = img.replace("-thumbnail", "");
-    thumbs.forEach((iten) => {
-      iten.classList.remove("active");
+    thumbs.forEach((item) => {
+      item.classList.remove("active");
     });
     buttonThumbs.classList.add("active");
   };
