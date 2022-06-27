@@ -67,58 +67,42 @@ addCart.addEventListener("click", () => {
     showQuantity.innerHTML = counterQuantity;
     document.querySelector(".cart-user i").classList.add("cart__itens");
     document.querySelector(".cart__itens").innerText = quantity;
+    const showcart = document.querySelector(".showcart");
+    const span = document.querySelector(".showcart span").remove();
+    showcart.innerHTML = `<p class="showcart__cart">Cart</p><span><img class="showcart__img-product" src="./images/image-product-1-thumbnail.jpg"><i>${product[0].product}<br>$${product[0].price} X${product[0].quantity}<b> $${product[0].total}</b></i><img class="showcart__img-delete" src="./images/icon-delete.svg" alt=""></span><button class="btn__checkout">Checkout<button/>`;
+
+    document
+      .querySelector(".showcart__img-delete")
+      .addEventListener("click", sendToBin);
+
+    document
+      .querySelector(".btn__checkout")
+      .addEventListener("click", checkout);
   }
 });
 
-/* Show Cart \\\\\\\\\\\ */
+function sendToBin(event) {
+  const cart = document.querySelector(".cart__itens");
+  cart.innerHTML = "";
+  cart.classList.remove("cart__itens");
+  document.querySelector(".showcart i").remove();
+  document.querySelector(".btn__checkout").remove();
+  const span = document.querySelector(".showcart span");
+  span.innerHTML = `<img class="showcart__img-product"><i>Your Cart is empty</i><img class="showcart__img-delete"> `;
+  quantity = 0;
+}
+
+function checkout(event) {
+  console.log(product[0]);
+}
+
+// Show Cart
 
 const cartButton = document.querySelector(".cart");
 const showCart = document.querySelector(".showcart");
 
 cartButton.addEventListener("click", () => {
-  if (quantity > 0) {
-    showCart.classList.toggle("showcart--active");
-    document.querySelector(".showcart__cart").innerText = "Cart";
-    document.querySelector(".showcart__img-product").src =
-      "./images/image-product-2-thumbnail.jpg";
-    document.querySelector(
-      ".showcart__description"
-    ).innerHTML = `${product[0].product}<br>$${product[0].price} X${product[0].quantity}<b> $${product[0].total}</b>`;
-    document.querySelector(".showcart__img-delete").src =
-      "./images/icon-delete.svg";
-    document.querySelector(".showcart button").classList.add("btn__checkout");
-    document.querySelector(".btn__checkout").innerText = "Checkout";
-  } else {
-    showCart.classList.toggle("showcart--active");
-    document.querySelector(".showcart__cart").innerText = "Cart";
-    document.querySelector(".showcart__img-product").src = "./images/sp.png";
-    document.querySelector(".showcart__description").innerHTML =
-      "Your cart is empty.";
-    document.querySelector(".showcart__img-delete").src = "./images/sp.png";
-  }
-});
-
-const bin = document.querySelector(".showcart__img-delete");
-
-bin.addEventListener("click", () => {
   showCart.classList.toggle("showcart--active");
-  document.querySelector(".btn__checkout").innerText = "";
-  document.querySelector(".btn__checkout").classList.remove("btn__checkout");
-  document.querySelector(".cart__itens").innerText = "";
-  document.querySelector(".cart__itens").classList.remove("cart__itens");
-  quantity = 0;
-});
-
-const btn = document.getElementById("btn__checkout");
-btn.addEventListener("click", () => {
-  window.alert(
-    product[0].product +
-      product[0].brand +
-      product[0].price +
-      product[0].quantity +
-      product[0].total
-  );
-  console.log(product[0]);
 });
 
 /// //Photos functions
