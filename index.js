@@ -17,11 +17,6 @@ close.addEventListener("click", () => {
   menu.classList.toggle("menu__list--active");
 });
 
-const mainPhoto = document.querySelector(".image");
-mainPhoto.addEventListener("click", () => {
-  popUpPhotos.classList.toggle("img-pop-bg-active");
-});
-
 const closePop = document.querySelector(".close-pop");
 closePop.addEventListener("click", () => {
   popUpPhotos.classList.toggle("img-pop-bg-active");
@@ -100,86 +95,88 @@ function checkout(event) {
 
 const cartButton = document.querySelector(".cart");
 const showCart = document.querySelector(".showcart");
-
 cartButton.addEventListener("click", () => {
   showCart.classList.toggle("showcart--active");
 });
 
-/// //Photos functions
+//Photos functions
 
-const previous = document.querySelector(".previous");
-const next = document.querySelector(".next");
+let photoIndex = 1;
+
 const thumbs = document.querySelectorAll(".thumbnail");
-
-let counter = 1;
-
-next.addEventListener("click", () => {
-  if (counter < thumbs.length && counter > 0) {
-    counter += 1;
-    const path = `./images/image-product-${counter}.jpg`;
-    document.querySelector(".image").src = path;
-  } else {
-    counter = 4;
-  }
-});
-
-previous.addEventListener("click", () => {
-  if (counter > 1 && counter <= thumbs.length) {
-    counter -= 1;
-    const path = `./images/image-product-${counter}.jpg`;
-    document.querySelector(".image").src = path;
-  } else {
-    counter = 1;
-  }
-});
-
-const previousPop = document.querySelector(".previous-pop");
-const nextPop = document.querySelector(".next-pop");
-
-nextPop.addEventListener("click", (item) => {
-  if (counter < thumbs.length && counter > 0) {
-    counter += 1;
-    const path = `./images/image-product-${counter}.jpg`;
-    document.querySelector(".image-pop").src = path;
-  } else {
-    counter = 4;
-  }
-});
-
-previousPop.addEventListener("click", (event) => {
-  if (counter > 1 && counter <= thumbs.length) {
-    counter -= 1;
-    const path = `./images/image-product-${counter}.jpg`;
-    document.querySelector(".image-pop").src = path;
-  } else {
-    counter = 1;
-  }
-});
-
-for (let i = 0; i < thumbs.length; i++) {
-  const buttonThumbs = thumbs[i];
-  const img = thumbs[i].src;
-
-  buttonThumbs.onclick = () => {
-    document.querySelector(".image").src = img.replace("-thumbnail", "");
-    document.querySelector(".image-pop").src = img.replace("-thumbnail", "");
+const pop = document.querySelector(".img-pop-bg");
+thumbs.forEach(thumb);
+function thumb(item) {
+  item.addEventListener("click", ({ currentTarget }) => {
+    const img = currentTarget.src;
+    if (pop.classList.contains("img-pop-bg-active")) {
+      document.querySelector(".image-pop").src = img.replace("-thumbnail", "");
+      photoIndex = +img.replace(/[^0-9]/g, "").slice(-1);
+    } else {
+      document.querySelector(".image").src = img.replace("-thumbnail", "");
+      photoIndex = +img.replace(/[^0-9]/g, "").slice(-1);
+    }
     thumbs.forEach((item) => {
       item.classList.remove("active");
     });
-    buttonThumbs.classList.add("active");
-  };
+    item.classList.add("active");
+  });
 }
 
-const thumbspop = document.querySelectorAll(".thumbnail-pop");
-for (let i = 0; i < thumbspop.length; i++) {
-  const buttonThumbs = thumbspop[i];
-  const img = thumbspop[i].src;
-
-  buttonThumbs.onclick = function (item) {
-    document.querySelector(".image-pop").src = img.replace("-thumbnail", "");
-    thumbspop.forEach((item) => {
-      item.classList.remove("active");
-    });
-    buttonThumbs.classList.add("active");
-  };
+const next = document.querySelectorAll(".nxt");
+next.forEach(nextPhoto);
+function nextPhoto(item) {
+  item.addEventListener("click", () => {
+    if (pop.classList.contains("img-pop-bg-active")) {
+      if (photoIndex >= 1 && photoIndex < 4) {
+        photoIndex += 1;
+        const path = `./images/image-product-${photoIndex}.jpg`;
+        document.querySelector(".image-pop").src = path;
+      } else {
+        photoIndex = 4;
+      }
+    } else {
+      if (photoIndex >= 1 && photoIndex < 4) {
+        photoIndex += 1;
+        const path = `./images/image-product-${photoIndex}.jpg`;
+        document.querySelector(".image").src = path;
+      } else {
+        photoIndex = 4;
+      }
+    }
+  });
 }
+
+const previous = document.querySelectorAll(".pvs");
+previous.forEach(previousPhoto);
+function previousPhoto(item) {
+  item.addEventListener("click", () => {
+    if (pop.classList.contains("img-pop-bg-active")) {
+      if (photoIndex <= 4 && photoIndex > 1) {
+        photoIndex -= 1;
+        const path = `./images/image-product-${photoIndex}.jpg`;
+        document.querySelector(".image-pop").src = path;
+      } else {
+        photoIndex = 1;
+      }
+    } else {
+      if (photoIndex <= 4 && photoIndex > 1) {
+        photoIndex -= 1;
+        const path = `./images/image-product-${photoIndex}.jpg`;
+        document.querySelector(".image").src = path;
+      } else {
+        photoIndex = 1;
+      }
+    }
+  });
+}
+
+const mainPhoto = document.querySelector(".image");
+mainPhoto.addEventListener("click", () => {
+  popUpPhotos.classList.toggle("img-pop-bg-active");
+  const path = `./images/image-product-${photoIndex}.jpg`;
+  document.querySelector(".image-pop").src = path;
+  thumbs.forEach((item) => {
+    item.classList.remove("active");
+  });
+});
